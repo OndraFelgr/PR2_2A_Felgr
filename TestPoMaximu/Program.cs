@@ -44,3 +44,24 @@
         }
     }
 }
+
+
+
+while (cekajiciZakaznici.Count > 0 && volneVoziky.Count > 0)
+{
+    int dobaNakupu = cekajiciZakaznici.Dequeue();
+    int vozik = volneVoziky.Dequeue();
+    if (!dobyPouziti.ContainsKey(vozik))
+        dobyPouziti[vozik] = 0;
+    dobyPouziti[vozik] += dobaNakupu;
+    obsazeneVoziky.Add((minuta + dobaNakupu + 1, vozik));
+}
+
+
+var serazeneVoziky = dobyPouziti.OrderByDescending(v => v.Value);
+Console.WriteLine("Vozík | Doba používání (minuty)");
+foreach (var v in serazeneVoziky)
+{
+    Console.WriteLine($"{v.Key}     | {v.Value}");
+}
+
