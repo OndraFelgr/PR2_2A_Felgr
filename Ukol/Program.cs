@@ -50,10 +50,21 @@ namespace ukol
                     {
                         cekajiciZakaznici.Enqueue(dobaNakupu);
                     }
+                    while (cekajiciZakaznici.Count > 0 && volneVoziky.Count > 0)
+                    {
+                        int dobaNakupp = cekajiciZakaznici.Dequeue();
+                        int vozik = volneVoziky.Dequeue();
+                        dobaPouziti[vozik] += dobaNakupp;
+                        obsazeneVoziky.Add((minuta + dobaNakupp + 1, vozik));
+                    }
+
+                }
+                foreach (var v in )
+                {
+                    Console.WriteLine($"{v.Vozik}     | {v.Doba}");
                 }
 
-                
-                
+
             }
           
 
