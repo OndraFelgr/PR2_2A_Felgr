@@ -59,12 +59,17 @@ namespace ukol
                     }
 
                 }
-                foreach (var v in )
+                var serazeneVoziky = dobaPouziti
+                .Select((doba, index) => new { CisloVoziku = index, CasPouziti = doba })
+                .OrderByDescending(v => v.CasPouziti)
+                 .ToList();
+
+                
+                Console.WriteLine("Vozík | Doba používání (min)");
+                foreach (var v in serazeneVoziky)
                 {
-                    Console.WriteLine($"{v.Vozik}     | {v.Doba}");
+                    Console.WriteLine(v.CisloVoziku + "     | " + v.CasPouziti);
                 }
-
-
             }
           
 
