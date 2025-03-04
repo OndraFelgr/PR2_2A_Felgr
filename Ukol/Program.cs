@@ -24,6 +24,7 @@ namespace ukol
 
             for (int minuta = casStart; minuta < casKonec; minuta++)
             {
+                //vraceni vozik
                 obsazeneVoziky.Sort((a, b) => a.casNavratu.CompareTo(b.casNavratu));
                 for (int i = 0; i < obsazeneVoziky.Count; i++)
                 {
@@ -61,8 +62,9 @@ namespace ukol
                 }
                 var serazeneVoziky = dobaPouziti
                 .Select((doba, index) => new { CisloVoziku = index, CasPouziti = doba })
+                //od nejpoužívanějšího
                 .OrderByDescending(v => v.CasPouziti)
-                 .ToList();
+                .ToList();
 
                 
                 Console.WriteLine("Vozík | Doba používání (min)");
